@@ -5,12 +5,13 @@ An argument parser that accepts:
 * An optional env file for secrets.
 
 Features:
+* MIT license
 * Interpolate environment variables directly into yaml configuration.
 * Replace environment variables with an environment variable file.
 * Use C Yaml safe load/dump or yaml safe load/dump.
 * Pass in env to parser with os.environ as a default.
 * Pass in argv to parser with sys.argv[1:] as a default.
-* MIT license
+* Yaml type registration functions
 
 Relative configargparse, python-dotenv, and yamlenv:
 * Deserialization and yaml file format is better than (post) configuration.
