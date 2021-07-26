@@ -37,7 +37,11 @@ def yaml_dumps(
     Dumper: Optional[Type[MyDumper]] = None,  # noqa: N803
     **kwargs,
 ):
-    """Yaml dumps."""
+    """Yaml dumps.
+
+    Include our Dumper. Clients do not have to repeat the try...except
+        import for CSafeDumper above.
+    """
     return _yaml_dumps(data=data, Dumper=Dumper or MyDumper, **kwargs)
 
 
@@ -46,7 +50,11 @@ def yaml_loads(
     *,
     Loader: Optional[Type[MyLoader]] = None,  # noqa: N803
 ):
-    """Yaml loads."""
+    """Yaml loads.
+
+    Include our Loader. Clients do not have to repeat the try...except
+        import for CSafeLoader above.
+    """
     return _yaml_loads(stream=stream, Loader=Loader or MyLoader)
 
 
