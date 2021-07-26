@@ -1,0 +1,64 @@
+[build-system]
+requires = [
+    "setuptools>=50.3.2",
+    "setuptools_scm[toml]>=4.1.2",
+    "wheel>=0.35.1",
+]
+
+[project]
+authors = [
+    "Jason Lubken"
+]
+license = "MIT"
+name = "envyaml"
+requires-python = ">=3.7.4"
+python = "^3.7.4"
+readme = "readme.md"
+
+[tool.black]
+line-length = 79
+target-version = ["py37","py38"]
+
+[tool.coverage.report]
+exclude_lines = [
+    "raise NotImplementedError()",
+    "pragma: nocover",
+    "if __name__ == .__main__.:",
+]
+precision = 2
+show_missing = true
+
+[tool.coverage.run]
+branch = true
+parallel = true
+
+[tool.isort]
+include_trailing_comma = true
+line_length = 79
+multi_line_output = 3
+known_first_party = ["envyaml"]
+default_section = "THIRDPARTY"
+
+[tool.pylint.basic]
+good-names = '''e,i,logger,Dumper,Loader,'''
+
+[tool.pylint.message_control]
+disable = '''duplicate-code,C0330'''
+
+[tool.pylint.miscellaneous]
+notes = '''FIXME,XXX'''
+
+[tool.pylint.similarities]
+min-similarity-lines = 4
+ignore-comments = "yes"
+ignore-docstrings = "yes"
+ignore-imports = "yes"
+
+[tool.pytest.ini_options]
+addopts = "-ra --cov=envyaml --cov-report=term-missing --strict-markers --ignore=.eggs --tb=short"
+testpaths = ["test"]
+norecursedirs = ".env .git .venv build dist"
+python_files = "test.py tests.py test_*.py *_test.py"
+
+[tool.setuptools_scm]
+local_scheme = "dirty-tag"

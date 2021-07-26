@@ -1,0 +1,28 @@
+*.py[cod]
+__pycache__
+
+# packages
+.eggs
+.build
+*.egg
+*.egg-info
+dist
+build
+eggs
+bin
+sdist
+
+# test / coverage
+.coverage
+.pytest_cache
+.pytest
+
+# mypy
+.mypy_cache
+
+# venv
+.env
+.venv
+
+# mac
+.DS_Store
