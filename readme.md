@@ -23,4 +23,4 @@ Setup:
 
 ## Docker, Lint & Test
 
-    docker-compose up test
+    docker-compose run test
