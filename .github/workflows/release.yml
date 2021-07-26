@@ -1,0 +1,49 @@
+name: release
+
+on:
+  release:
+    types:
+    - published
+
+jobs:
+
+  publish:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: checkout
+      uses: actions/checkout@v2.3.4
+
+    - name: version
+      run: |
+        # Tagged release
+        if [[ ${{ github.ref }} == refs/tags/* ]]; then
+          # Strip git ref prefix from $VERSION
+          TAGNAME=$(echo "${{ github.ref }}" | sed -e 's,.*/\(.*\),\1,')
+          # Strip "v" prefix from tag name
+          VERSION=$(echo $TAGNAME | sed -e 's/^v//')
+        else
+          VERSION=${{ github.sha }}
+        fi
+        echo "VERSION=$VERSION" >> $GITHUB_ENV
+        echo "Version: $VERSION"
+
+        export DOCKER_BUILDKIT=1
+
+    - name: publish
+      run: |
+        VERSION="${{ env.VERSION }}"
+        TARGETS="test"
+
+        echo ${{ secrets.GITHUB_TOKEN }} | docker login docker.pkg.github.com -u ${{ github.actor }} --password-stdin
+
+        for TARGET in $TARGETS
+        do
+          docker build -f dockerfile . --target $TARGET -t $TARGET
+          NAME=$(docker inspect --format '{{index .Config.Labels "name"}}' $TARGET)
+          echo "name: $NAME"
+          PUSH="docker.pkg.github.com/${{ github.repository }}/$NAME:$VERSION"
+          echo "push: $PUSH"
+          docker tag $TARGET $PUSH
+          docker push $PUSH
+        done
