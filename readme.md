@@ -22,9 +22,9 @@ Relative configargparse, python-dotenv, and yamlenv:
 
 ## Status
 
-[![Release](https://github.com/pennsignals/yamlenv/workflows/release/badge.svg)](https://github.com/pennsignals/yamlenv/actions?query=workflow%3Arelease)
+[![Release](https://github.com/pennsignals/envyaml/workflows/release/badge.svg)](https://github.com/pennsignals/envyaml/actions?query=workflow%3Arelease)
 
-[![Test](https://github.com/pennsignals/yamlenv/workflows/test/badge.svg)](https://github.com/pennsignals/yamlenv/actions?query=workflow%3Atest)
+[![Test](https://github.com/pennsignals/envyaml/workflows/test/badge.svg)](https://github.com/pennsignals/envyaml/actions?query=workflow%3Atest)
 
 ## Install
 
