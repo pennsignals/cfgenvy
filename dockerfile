@@ -25,7 +25,7 @@ RUN \
 
 FROM build as test
 ARG IFLAGS
-LABEL name="yamlenv.test"
+LABEL name="envyaml.test"
 WORKDIR /root
 RUN \
     pip install ${IFLAGS} ".[all]"
