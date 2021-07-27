@@ -16,11 +16,11 @@ Features:
 * Yaml type registration functions.
 
 Relative configargparse, python-dotenv, envyaml, and yamlenv:
-* Dependency injection through depth-first deserialization of yaml is better than two-pass, breadth-first init and configuration.
-* Contract for env variables is between configuration file and env, the app no longer care much about env or secrets.
-* No ${MY_VAR:my-default} --unexpected env var syntax--.
-* No "N/A" or null default when environment variable does not exist --do not allow configuration errors to look like runtime errors--.
-* Env file is optional, but when provided it does not merge with existing environment variables.
+* Dependency injection through depth-first deserialization of yaml is better than two-pass, breadth-first init and configure.
+* Contract for env variables is between configuration file and env, the app no longer cares much about env or secrets.
+* No ${MY_VAR:my-default} --unexpected env var syntax for default values, an expensive pattern match, and allows typos of MY_VAR to pass silently--.
+* No "N/A" or null default when environment variable does not exist --allows configuration errors to pass silently to become runtime errors--.
+* Env file is optional, but when provided it does not merge with existing environment variables --better tracability in production deployment--.
 * Yaml type registration retains the registered yaml tag in a closure.
 * Env yaml type registration retains the registered env variable set in a closure.
 
