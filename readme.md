@@ -45,6 +45,10 @@ Setup:
     pre-commit install
     pre-commit run --all-files
 
+    ...
+
+    deactivate
+
 
 ## Docker, Lint & Test
 
