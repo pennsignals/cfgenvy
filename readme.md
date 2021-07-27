@@ -39,7 +39,6 @@ Relative configargparse, python-dotenv, envyaml, and yamlenv:
 Setup:
 
     python3.9 -m venv .venv
-
     . .venv/bin/activate
     pip install ".[all]"
     pre-commit install
