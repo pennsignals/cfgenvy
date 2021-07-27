@@ -43,6 +43,7 @@ Setup:
     . .venv/bin/activate
     pip install ".[all]"
     pre-commit install
+    pre-commit run --all-files
 
 
 ## Docker, Lint & Test
