@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-"""Env Yaml."""
+"""Cfgenvy: Cfg Env Yaml."""
 
 from setuptools import find_packages, setup
 

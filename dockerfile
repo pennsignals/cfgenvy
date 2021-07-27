@@ -25,7 +25,7 @@ RUN \
 
 FROM build as test
 ARG IFLAGS
-LABEL name="envyaml.test"
+LABEL name="cfgenvy.test"
 WORKDIR /root
 RUN \
     pip install ${IFLAGS} ".[all]"

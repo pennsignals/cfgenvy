@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-"""Env yaml."""
+"""Cfg env yaml."""
 
 from .env import Env
 from .parser import Parser

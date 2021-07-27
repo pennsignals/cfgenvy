@@ -10,7 +10,7 @@ authors = [
     "Jason Lubken"
 ]
 license = "MIT"
-name = "envyaml"
+name = "cfgenvy"
 requires-python = ">=3.7.4"
 python = "^3.7.4"
 readme = "readme.md"
@@ -36,7 +36,7 @@ parallel = true
 include_trailing_comma = true
 line_length = 79
 multi_line_output = 3
-known_first_party = ["envyaml"]
+known_first_party = ["cfgenvy"]
 default_section = "THIRDPARTY"
 
 [tool.pylint.basic]
@@ -55,7 +55,7 @@ ignore-docstrings = "yes"
 ignore-imports = "yes"
 
 [tool.pytest.ini_options]
-addopts = "-ra --cov=envyaml --cov-report=term-missing --strict-markers --ignore=.eggs --tb=short"
+addopts = "-ra --cov=cfgenvy --cov-report=term-missing --strict-markers --ignore=.eggs --tb=short"
 testpaths = ["test"]
 norecursedirs = ".env .git .venv build dist"
 python_files = "test.py tests.py test_*.py *_test.py"

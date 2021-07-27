@@ -1,12 +1,12 @@
 # -*- coding: utf-8 -*-
-"""Test envyaml."""
+"""Test cfgenvy."""
 
 from io import StringIO
 from typing import Optional
 
 from pytest import mark
 
-from envyaml import Parser, yaml_dumps, yaml_type
+from cfgenvy import Parser, yaml_dumps, yaml_type
 
 
 class Service(Parser):

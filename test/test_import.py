@@ -4,6 +4,7 @@
 
 def test_import():
     """Test import."""
-    import envyaml  # pylint: disable=import-outside-toplevel
+    import cfgenvy  # pylint: disable=import-outside-toplevel
 
-    assert envyaml.Env is not None
+    assert cfgenvy.Env is not None
+    assert cfgenvy.Parser is not None
