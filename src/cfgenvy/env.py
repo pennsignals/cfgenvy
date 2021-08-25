@@ -72,7 +72,6 @@ class Env:
                 line = next(stream)
             except StopIteration:
                 break
-            logger.warning(line)
             line = line.strip()
             if not line:
                 continue
