@@ -21,13 +21,13 @@ logger = getLogger(__name__)
 
 def yaml_dump(data: Any, path: str, **kwargs) -> None:
     """Dump yaml file."""
-    with open(path, "w") as fout:
+    with open(path, "w", encoding="utf-8") as fout:
         yaml_dumps(data=data, stream=fout, **kwargs)
 
 
 def yaml_load(path: str):
     """Load yaml file."""
-    with open(path) as fin:
+    with open(path, encoding="utf-8") as fin:
         return yaml_loads(fin)
 
 

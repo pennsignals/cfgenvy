@@ -17,7 +17,7 @@ class Env:
     """Env."""
 
     YAML = "!env"
-    PATTERN = re_compile(r".?\$\{([^\}^\{]+)\}.?")
+    PATTERN = re_compile(r"\$\{([^\}^\{]+)\}")
 
     @classmethod
     def as_yaml_type(
@@ -60,7 +60,7 @@ class Env:
     @classmethod
     def load(cls, path: str) -> Mapping[str, str]:
         """Env load."""
-        with open(path) as fin:
+        with open(path, encoding="utf-8") as fin:
             return cls.loads(fin)
 
     @classmethod

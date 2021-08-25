@@ -33,8 +33,8 @@ class Parser:
 
         if env_file:
             logger.debug("Environment variables are only from %s", env_file)
-            with open(env_file) as envs:
-                with open(config_file) as configs:
+            with open(env_file, encoding="utf-8") as envs:
+                with open(config_file, encoding="utf-8") as configs:
                     return cls.loads(
                         configs=configs,
                         env=_env,
@@ -43,7 +43,7 @@ class Parser:
                     )
 
         logger.debug("Environment variables are being used.")
-        with open(config_file) as configs:
+        with open(config_file, encoding="utf-8") as configs:
             return cls.loads(
                 configs=configs,
                 env=_env,
