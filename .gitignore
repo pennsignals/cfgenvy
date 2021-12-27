@@ -23,6 +23,7 @@ sdist
 # venv
 .env
 .venv
+.py39
 
 # mac
 .DS_Store
