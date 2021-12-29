@@ -1,10 +1,10 @@
 # -*- coding: utf-8 -*-
-"""Cfgenvy: Cfg Env Yaml."""
+"""cfgenvy: Cfg Env Yaml."""
 
 from setuptools import find_packages, setup
 
 INSTALL_REQUIRES = (
-    "pip>=21.2.1",
+    "pip>=21.3.1",
     "pyyaml>=5.3.1",
     "setuptools>=57.4.0",
     "wheel>=0.35.1",

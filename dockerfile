@@ -1,10 +1,10 @@
 ARG IFLAGS="--quiet --no-cache-dir --user"
 
-FROM python:3.9.6-slim-buster as build
+FROM python:3.9.9-slim-bullseye as build
 ARG IFLAGS
-WORKDIR /root
+ARG TINI_VERSION=v0.19.0
+WORKDIR /tmp
 ENV PATH /root/.local/bin:$PATH
-ENV TINI_VERSION v0.19.0
 ADD https://github.com/krallin/tini/releases/download/${TINI_VERSION}/tini /usr/bin/tini
 COPY readme.md .
 COPY setup.cfg .
@@ -26,7 +26,7 @@ RUN \
 FROM build as test
 ARG IFLAGS
 LABEL name="cfgenvy.test"
-WORKDIR /root
+WORKDIR /tmp
 RUN \
     pip install ${IFLAGS} ".[all]"
 ENTRYPOINT [ "/usr/bin/tini", "--" ]
