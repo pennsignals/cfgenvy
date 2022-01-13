@@ -113,3 +113,29 @@ def yaml_implicit_type(
             return repr(dumper, self, tag=tag, pattern=pattern, **kwargs)
 
         _dumper.add_representer(cls, _repr_closure)
+
+
+class Mapping:
+    """Mapping."""
+
+    YAML = "!mapping"
+
+    @classmethod
+    def as_yaml_type(cls, tag: Optional[str] = None) -> None:
+        """As yaml type."""
+        yaml_type(
+            cls,
+            tag or cls.YAML,
+            init=cls._yaml_init,
+            repr=cls._yaml_repr,
+        )
+
+    @classmethod
+    def _yaml_init(cls, loader, node):
+        """Yaml init."""
+        return cls(**loader.construct_mapping(node, deep=True))
+
+    @classmethod
+    def _yaml_repr(cls, dumper, self, *, tag: str):
+        """Yaml repr."""
+        return dumper.represent_mapping(tag, self.as_yaml())

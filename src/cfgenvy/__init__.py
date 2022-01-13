@@ -10,6 +10,7 @@ from .yaml import (
     yaml_load,
     yaml_loads,
     yaml_type,
+    Mapping as YamlMapping,
 )
 
 __all__ = (
@@ -21,4 +22,5 @@ __all__ = (
     "yaml_load",
     "yaml_loads",
     "yaml_type",
+    "YamlMapping",
 )
