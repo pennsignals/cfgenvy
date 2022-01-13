@@ -4,7 +4,7 @@
 from __future__ import annotations
 
 from logging import getLogger
-from typing import Any, Callable, Optional, Pattern, Type
+from typing import Any, Dict, Callable, Optional, Pattern, Type
 
 from yaml import dump as _yaml_dumps
 from yaml import load as _yaml_loads
@@ -131,11 +131,15 @@ class Mapping:
         )
 
     @classmethod
-    def _yaml_init(cls, loader, node):
+    def _yaml_init(cls, loader, node) -> Any:
         """Yaml init."""
         return cls(**loader.construct_mapping(node, deep=True))
 
     @classmethod
-    def _yaml_repr(cls, dumper, self, *, tag: str):
+    def _yaml_repr(cls, dumper, self, *, tag: str) -> str:
         """Yaml repr."""
         return dumper.represent_mapping(tag, self.as_yaml())
+
+    def as_yaml(self) -> Dict[str, Any]:
+        """As yaml."""
+        raise NotImplementedError()
