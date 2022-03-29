@@ -2,6 +2,8 @@
 
 ## Overview
 
+[![Code style: black](https://img.shields.io/badge/code%20style-black-000000.svg)](https://github.com/psf/black)
+
 An argument parser that accepts:
 * A required yaml file for configuration/deserialization.
 * An optional env file for secrets.
