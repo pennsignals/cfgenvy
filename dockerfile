@@ -6,6 +6,7 @@ ARG TINI_VERSION=v0.19.0
 WORKDIR /tmp
 ENV PATH /root/.local/bin:$PATH
 ADD https://github.com/krallin/tini/releases/download/${TINI_VERSION}/tini /usr/bin/tini
+COPY license.txt .
 COPY readme.md .
 COPY setup.cfg .
 COPY setup.py .

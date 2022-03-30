@@ -44,7 +44,7 @@ repos:
 - repo: local
   hooks:
   - id: pytest
-    entry: python setup.py test
+    entry: pytest
     language: system
     pass_filenames: false
     name: pytest
