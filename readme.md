@@ -1,5 +1,3 @@
-## Cfgenvy: Cfg env yaml
-
 ## Overview
 
 [![Code style: black](https://img.shields.io/badge/code%20style-black-000000.svg)](https://github.com/psf/black)
@@ -40,7 +38,7 @@ Relative configargparse, python-dotenv, envyaml, and yamlenv:
 
 Setup:
 
-    python3.9 -m venv .venv
+    python3.10 -m venv .venv
     . .venv/bin/activate
     pip install ".[all]"
     pre-commit install
