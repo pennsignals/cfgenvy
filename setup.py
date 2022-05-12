@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-"""cfgenvy: Cfg Env Yaml."""
+"""Configuration from Environment embedded in Yaml."""
 
 from setuptools import find_packages, setup
 
