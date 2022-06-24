@@ -23,7 +23,14 @@ sdist
 # venv
 .env
 .venv
+.py37
+.py38
 .py39
+.py310
 
 # mac
 .DS_Store
+
+# editor
+*.swp
+.idea
