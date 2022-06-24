@@ -23,12 +23,11 @@ RUN \
     apt-get -qq clean && \
     apt-get -qq autoremove -y --purge && \
     rm -rf /var/lib/apt/lists/*
+ENTRYPOINT [ "/usr/bin/tini", "--" ]
+CMD [ "pip", "wheel", "--no-deps", "-w", "./dist", "." ]
 
 FROM build as test
-ARG IFLAGS
-LABEL name="cfgenvy.test"
-WORKDIR /tmp
 RUN \
-    pip install ${IFLAGS} ".[all]"
-ENTRYPOINT [ "/usr/bin/tini", "--" ]
+    pip wheel --no-deps -w ./dist . && \
+    for EACH in ./dist/*.whl; do pip install ${IFLAGS} "${EACH}[all]"; done
 CMD [ "pre-commit", "run", "--all-files" ]

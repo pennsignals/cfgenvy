@@ -7,3 +7,9 @@ services:
       context: .
       dockerfile: dockerfile
       target: test
+
+  build:
+    build:
+      context: .
+      dockerfile: dockerfile
+      target: build
