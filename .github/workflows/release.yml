@@ -17,7 +17,9 @@ jobs:
     - name: publish
       run: |
         docker-compose run build
-        for EACH in ./dist/*.whl; do 
+        cd dist
+        for EACH in ./*.whl; do
+          echo ${{ github.event.release.upload_url }}/assets/${EACH}
           curl -X POST \
             -H "Accept: application/vnd.github.v3+json" \
             -H "Authorization: token ${{ secrets.GITHUB_TOKEN }}" \ 
