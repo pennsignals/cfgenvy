@@ -8,6 +8,7 @@ ENV PATH /root/.local/bin:$PATH
 ADD https://github.com/krallin/tini/releases/download/${TINI_VERSION}/tini /usr/bin/tini
 COPY . .
 RUN \
+    pip install --upgrade pip && \
     chmod +x /usr/bin/tini && \
     apt-get -qq update --fix-missing && \
     apt-get -qq install -y --no-install-recommends git libyaml-dev > /dev/null && \
