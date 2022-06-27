@@ -17,13 +17,12 @@ jobs:
     - name: publish
       run: |
         docker-compose run build
-        cd dist
-        for EACH in *.whl; do
-          echo ${{ github.event.release.upload_url }}/${EACH}
+        for EACH in ./dist/*.whl; do
+          echo "${{ github.event.release.upload_url }}=$(basename $EACH)"
           curl -X POST \
             -H "Accept: application/vnd.github.v3+json" \
             -H "Authorization: token ${{ secrets.GITHUB_TOKEN }}" \
-            -H "Content-Type: application/zip" \
-            -data-binary "@${EACH}" \
-            ${{ github.event.release.upload_url }}/${EACH}
+            -H "Content-Type: $(file -b --mime-type $EACH)" \
+            -T "$EACH" \
+            "${{ github.event.release.upload_url }}=$(basename $EACH)"
         done;
