@@ -29,7 +29,7 @@ description = "Configuration from Environment embedded in yaml."
 dynamic = ["dependencies", "optional-dependencies", "version"]
 license = { file = "license.txt" }
 name = "cfgenvy"
-requires-python = ">=3.7.4"
+requires-python = ">=3.7"
 readme = "readme.md"
 
 [project.urls]
