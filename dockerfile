@@ -6,15 +6,7 @@ ARG TINI_VERSION=v0.19.0
 WORKDIR /tmp
 ENV PATH /root/.local/bin:$PATH
 ADD https://github.com/krallin/tini/releases/download/${TINI_VERSION}/tini /usr/bin/tini
-COPY license.txt .
-COPY readme.md .
-COPY setup.cfg .
-COPY setup.py .
-COPY pyproject.toml .
-COPY .pre-commit-config.yaml .
-COPY .git ./.git
-COPY src ./src
-COPY test ./test
+COPY . .
 RUN \
     chmod +x /usr/bin/tini && \
     apt-get -qq update --fix-missing && \
