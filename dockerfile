@@ -27,6 +27,7 @@ ENTRYPOINT [ "/usr/bin/tini", "--" ]
 CMD [ "pip", "wheel", "--no-deps", "-w", "./dist", "." ]
 
 FROM build as test
+ARG IFLAGS
 RUN \
     pip wheel --no-deps -w ./dist . && \
     for EACH in ./dist/*.whl; do pip install ${IFLAGS} "${EACH}[all]"; done
