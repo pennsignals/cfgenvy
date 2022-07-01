@@ -1,0 +1,35 @@
+on:
+  release:
+    types: [ created ]
+
+name: build
+
+env:
+  PYTHON_BASE: "python:3.7-slim-bullseye"
+
+jobs:
+
+  build:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        target:
+        - python:3.7-slim-bullseye
+        - python:3.8-slim-bullseye
+        - python:3.9-slim-bullseye
+        - python:3.10-slim-bullseye
+
+    steps:
+    - name: checkout
+      uses: actions/checkout@master
+
+    - name: build
+
+      run: |
+        echo Building ${{ matrix.target }}:${{ env.PYTHON_BASE }} 
+        docker build -f ${{ matrix.target }}.dockerfile . -t ${{ matrix.target }} --build-arg PYTHON_BASE=${{ env.PYTHON_BASE }} --build-arg WHL=${{ env.WHL }}
+        ID=$(docker create ${{ matrix.target }}:latest noop)
+        docker cp $ID:/tmp .
+        docker rm $ID
+        
+        Here I should use the matrix to build the wheel simultaneously using each python version
