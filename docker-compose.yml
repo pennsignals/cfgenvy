@@ -7,9 +7,18 @@ services:
       context: .
       dockerfile: dockerfile
       target: test
+    platform: linux/x86_64
 
-  build:
+  wheel:
     build:
       context: .
       dockerfile: dockerfile
-      target: build
+      target: wheel
+    platform: linux/x86_64
+
+  pre-commit:
+    build:
+      context: .
+      dockerfile: dockerfile
+      target: pre-commit
+    platform: linux/x86_64
