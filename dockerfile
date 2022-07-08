@@ -31,7 +31,7 @@ RUN \
     pip wheel --no-deps -w ./dist .
 
 FROM binaries as test
-COPY --from=build-wheel ./dist/.* ./dist/
+COPY --from=build-wheel /tmp/dist/*.whl /tmp/dist/
 RUN \
     pip install --find-links=./dist cfgenvy[all]
 CMD pytest
