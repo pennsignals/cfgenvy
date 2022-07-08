@@ -26,12 +26,16 @@ RUN \
     pip install ".[all]"
 CMD pre-commit run --all-files
 
+FROM wheel as pytest
+RUN \
+    pip install ".[all]"
+CMD pytest
+
 FROM wheel as build-wheel
 RUN \
     pip wheel --no-deps -w ./dist .
 
-FROM binaries as test
+FROM binaries as publish
 COPY --from=build-wheel /tmp/dist/*.whl /tmp/dist/
 RUN \
     pip install --find-links=./dist cfgenvy[all]
-CMD pytest
