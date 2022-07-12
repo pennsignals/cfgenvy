@@ -22,8 +22,6 @@ jobs:
 
     - name: build
 
-     run: |
+      run: |
         echo Building Python ${{ matrix.target }}
-        docker-compose up \
-          --build-arg PYTHON_VERSION=${{ matrix.target }} \
-        build
+        docker-compose up --build-arg PYTHON_VERSION=${{ matrix.target }} build
