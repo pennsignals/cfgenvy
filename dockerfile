@@ -26,7 +26,7 @@ RUN \
     pip install ".[all]"
 CMD pre-commit run --all-files
 
-FROM wheel as pytest
+FROM wheel as test
 RUN \
     pip install ".[all]"
 CMD pytest
