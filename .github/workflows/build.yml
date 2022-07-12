@@ -11,10 +11,10 @@ jobs:
     strategy:
       matrix:
         target:
-        - 3.7
-        - 3.8
-        - 3.9
-        - 3.10
+        - "3.7"
+        - "3.8"
+        - "3.9"
+        - "3.10"
 
     steps:
     - name: checkout
@@ -24,4 +24,4 @@ jobs:
 
       run: |
         echo Building Python ${{ matrix.target }}
-        docker compose up --build --build-arg PYTHON_VERSION=${{ matrix.target }} build
+        docker compose up --build-arg PYTHON_VERSION=${{ matrix.target }} build
