@@ -41,10 +41,8 @@ setup(
     },
     include_package_data=True,
     install_requires=INSTALL_REQUIRES,
-    name="cfgenvy",
     packages=find_packages("src"),
     package_dir={"": "src"},
     python_requires=">=3.7",
-    url="https://github.com/pennsignals/cfgenvy",
     use_scm_version={"local_scheme": "dirty-tag"},
 )
