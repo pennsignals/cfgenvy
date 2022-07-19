@@ -23,5 +23,5 @@ jobs:
     - name: build
 
       run: |
-        echo Building Python ${{ matrix.target }}
-        docker-compose up --build-arg PYTHON_VERSION=${{ matrix.target }} build
+        echo ${{ secrets.GITHUB_TOKEN }} | docker login ghcr.io -u ${{ github.actor }} --password-stdin
+        docker-compose run --build-arg PYTHON_VERSION=${{ matrix.target }} wheel

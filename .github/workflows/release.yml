@@ -16,7 +16,8 @@ jobs:
 
     - name: build
       run: |
-        docker-compose up build
+        echo ${{ secrets.GITHUB_TOKEN }} | docker login ghcr.io -u ${{ github.actor }} --password-stdin
+        docker-compose run wheel
 
     - name: publish to pypi
       uses: pypa/gh-action-pypi-publish@v1.5.0
