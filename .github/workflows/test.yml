@@ -6,11 +6,22 @@ jobs:
   test:
     runs-on: ubuntu-latest
 
-    steps:
-    - name: checkout
-      uses: actions/checkout@v2.3.4
+    strategy:
+      matrix:
+        target:
+          - "3.7"
+          - "3.8"
+          - "3.9"
+          - "3.10"
 
-    - name: test
-      run: |
-        echo ${{ secrets.GITHUB_TOKEN }} | docker login ghcr.io -u ${{ github.actor }} --password-stdin
-        docker compose run test
+    steps:
+      - name: checkout
+        uses: actions/checkout@v2.3.4
+
+      - name: build
+        run: |
+          echo ${{ secrets.GITHUB_TOKEN }} | docker login ghcr.io -u ${{ github.actor }} --password-stdin
+          echo ${{ matrix.target }}
+          docker compose build --build-arg PYTHON_VERSION=${{ matrix.target }}
+          docker compose run test
+          docker compose run test-wheel-install

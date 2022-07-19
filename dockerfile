@@ -1,5 +1,4 @@
-ARG IFLAGS="--quiet --no-cache-dir --user"
-ARG PYTHON_VERSION="3.7"
+ARG PYTHON_VERSION="3.10"
 
 FROM python:${PYTHON_VERSION}-slim-bullseye as binaries
 ARG TINI_VERSION=v0.19.0
@@ -31,11 +30,11 @@ RUN \
     pip install ".[all]"
 CMD pytest
 
-FROM wheel as build-wheel
+FROM wheel as build-wheel-install
 RUN \
     pip wheel --no-deps -w ./dist .
 
-FROM binaries as publish
-COPY --from=build-wheel /tmp/dist/*.whl /tmp/dist/
+FROM binaries as test-wheel-install
+COPY --from=build-wheel-install /tmp/dist/*.whl /tmp/dist/
 RUN \
     pip install --find-links=./dist cfgenvy[all]
