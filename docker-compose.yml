@@ -9,13 +9,6 @@ services:
       target: test
     platform: linux/x86_64
 
-  wheel:
-    build:
-      context: .
-      dockerfile: dockerfile
-      target: wheel
-    platform: linux/x86_64
-
   pre-commit:
     build:
       context: .
@@ -23,9 +16,16 @@ services:
       target: pre-commit
     platform: linux/x86_64
 
-  test-wheel-install:
+  build-wheel:
     build:
       context: .
       dockerfile: dockerfile
-      target: test-wheel-install
+      target: build-wheel
+    platform: linux/x86_64
+
+  install-wheel:
+    build:
+      context: .
+      dockerfile: dockerfile
+      target: install-wheel
     platform: linux/x86_64
