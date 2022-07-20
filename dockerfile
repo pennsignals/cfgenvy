@@ -14,27 +14,23 @@ RUN \
     rm -rf /var/lib/apt/lists/*
 ENTRYPOINT [ "/usr/bin/tini", "--" ]
 
-FROM binaries as wheel
+FROM binaries as source
 COPY . .
 RUN \
     pip install -U pip setuptools build wheel
-CMD pip wheel --no-deps -w ./dist .
 
-FROM wheel as pre-commit
+FROM source as pre-commit
 RUN \
     pip install ".[all]"
 CMD pre-commit run --all-files
 
-FROM wheel as test
+FROM source as test
 RUN \
     pip install ".[all]"
 CMD pytest
 
-FROM wheel as build-wheel-install
-RUN \
-    pip wheel --no-deps -w ./dist .
+FROM source as build-wheel
+CMD pip wheel --no-deps -w ./dist .
 
-FROM binaries as test-wheel-install
-COPY --from=build-wheel-install /tmp/dist/*.whl /tmp/dist/
-RUN \
-    pip install --find-links=./dist cfgenvy[all]
+FROM binaries as install-wheel
+CMD pip install --find-links=./dist cfgenvy[all]

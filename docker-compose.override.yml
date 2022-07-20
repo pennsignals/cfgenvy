@@ -2,6 +2,10 @@ version: "3.8"
 
 services:
 
-  wheel:
+  build-wheel:
+    volumes:
+      - ./dist:/tmp/dist:rw
+
+  install-wheel:
     volumes:
       - ./dist:/tmp/dist:rw
