@@ -23,5 +23,5 @@ jobs:
           echo ${{ secrets.GITHUB_TOKEN }} | docker login ghcr.io -u ${{ github.actor }} --password-stdin
           echo ${{ matrix.target }}
           docker compose build --build-arg PYTHON_VERSION=${{ matrix.target }}
-          docker compose run test
+          docker compose run pre-commit
           docker compose run test-wheel-install
