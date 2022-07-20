@@ -19,7 +19,16 @@ jobs:
         echo ${{ secrets.GITHUB_TOKEN }} | docker login ghcr.io -u ${{ github.actor }} --password-stdin
         docker compose run build-wheel
 
-    - name: publish
+    - name: pre-release
+      if: ${{ github.event.release.prerelease }}
+      uses: pypa/gh-action-pypi-publish@v1.5.0
+      with:
+        user: __token__
+        password: ${{ secrets.TEST_PYPI_API_TOKEN }}
+        repository_url: https://test.pypi.org/legacy/
+
+    - name: release
+      if: ${{ !github.event.release.prerelease }}
       uses: pypa/gh-action-pypi-publish@v1.5.0
       with:
         user: __token__
