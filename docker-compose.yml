@@ -22,3 +22,10 @@ services:
       dockerfile: dockerfile
       target: pre-commit
     platform: linux/x86_64
+
+  test-wheel-install:
+    build:
+      context: .
+      dockerfile: dockerfile
+      target: test-wheel-install
+    platform: linux/x86_64
