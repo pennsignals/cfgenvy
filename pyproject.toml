@@ -10,6 +10,7 @@ requires = [
 [project]
 authors = [
     { name = "Jason Lubken", email = "jlubken@users.noreply.github.com" },
+    { name = "Graydon Neill", email = "grayeye@users.noreply.github.com" },
     { name = "Penn Signals", email = "pennsignals@pennmedicine.upenn.edu" },
 ]
 classifiers = [
