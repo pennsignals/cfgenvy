@@ -16,7 +16,6 @@ jobs:
 
     - name: build
       run: |
-        echo ${{ secrets.GITHUB_TOKEN }} | docker login ghcr.io -u ${{ github.actor }} --password-stdin
         docker compose run build-wheel
 
     - name: pre-release

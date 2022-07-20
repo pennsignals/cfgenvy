@@ -23,7 +23,6 @@ jobs:
 
       - name: build
         run: |
-          echo ${{ secrets.GITHUB_TOKEN }} | docker login ghcr.io -u ${{ github.actor }} --password-stdin
           docker compose build --build-arg PYTHON_VERSION=${{ matrix.target }}
 
       - name: pre-commit
