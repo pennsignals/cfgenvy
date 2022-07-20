@@ -17,7 +17,7 @@ ENTRYPOINT [ "/usr/bin/tini", "--" ]
 FROM binaries as source
 COPY . .
 RUN \
-    pip install -U pip setuptools build wheel
+    pip install -U pip setuptools wheel
 
 FROM source as pre-commit
 RUN \

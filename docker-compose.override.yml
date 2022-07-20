@@ -8,4 +8,4 @@ services:
 
   install-wheel:
     volumes:
-      - ./dist:/tmp/dist:rw
+      - ./dist:/tmp/dist:r
