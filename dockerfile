@@ -1,5 +1,5 @@
 ARG PYTHON_VERSION="3.10"
-ARG ROOT_CONTAINER=python:${PYTHON_VERSION{-slim-bullseye
+ARG ROOT_CONTAINER=python:${PYTHON_VERSION}-slim-bullseye
 
 FROM ${ROOT_CONTAINER} as binaries
 SHELL ["/bin/bash", "-o", "pipefail", "-c"]
