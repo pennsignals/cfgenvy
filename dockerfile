@@ -11,11 +11,11 @@ RUN \
     apt-get -qq update --yes && \
     apt-get -qq upgrade --yes && \
     apt-get -qq install --yes --no-install-recommends \
-        gcc \
+	gcc \
 	git \
-        libc6-dev \
-        libyaml-dev \
-        tini \
+	libc6-dev \
+	libyaml-dev \
+	tini \
     > /dev/null && \
     apt-get -qq clean && \
     rm -rf /var/lib/apt/lists/* && \
