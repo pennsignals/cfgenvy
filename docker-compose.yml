@@ -13,12 +13,6 @@ services:
       dockerfile: dockerfile
       target: pre-commit
 
-  pytest:
-    build:
-      context: .
-      dockerfile: dockerfile
-      target: pytest
-
   build-wheel:
     build:
       context: .

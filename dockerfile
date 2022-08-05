@@ -33,7 +33,7 @@ RUN \
 CMD pre-commit run --all-files
 
 
-FROM source as pytest
+FROM source as test
 RUN \
     pip install ".[dev]"
 CMD pytest
