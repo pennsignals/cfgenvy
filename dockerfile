@@ -11,8 +11,8 @@ RUN \
     apt-get -qq update --yes && \
     apt-get -qq upgrade --yes && \
     apt-get -qq install --yes --no-install-recommends \
-	git \
         gcc \
+	git \
         libc6-dev \
         libyaml-dev \
         tini \
