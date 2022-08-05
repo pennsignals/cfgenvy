@@ -3,32 +3,31 @@ name: release
 on:
   release:
     types:
-    - published
+      - published
 
 jobs:
-
   publish:
     runs-on: ubuntu-latest
 
     steps:
-    - name: checkout
-      uses: actions/checkout@v2.3.4
+      - name: checkout
+        uses: actions/checkout@v2.3.4
 
-    - name: build
-      run: |
-        docker compose run build-wheel
+      - name: build
+        run: |
+          docker compose run build-wheel
 
-    - name: pre-release
-      if: ${{ github.event.release.prerelease }}
-      uses: pypa/gh-action-pypi-publish@v1.5.0
-      with:
-        repository_url: https://test.pypi.org/legacy/
-        user: __token__
-        password: ${{ secrets.TEST_PYPI_API_TOKEN }}
+      - name: pre-release
+        if: ${{ github.event.release.prerelease }}
+        uses: pypa/gh-action-pypi-publish@v1.5.0
+        with:
+          repository_url: https://test.pypi.org/legacy/
+          user: __token__
+          password: ${{ secrets.TEST_PYPI_API_TOKEN }}
 
-    - name: release
-      if: ${{ !github.event.release.prerelease }}
-      uses: pypa/gh-action-pypi-publish@v1.5.0
-      with:
-        user: __token__
-        password: ${{ secrets.PYPI_API_TOKEN }}
+      - name: release
+        if: ${{ !github.event.release.prerelease }}
+        uses: pypa/gh-action-pypi-publish@v1.5.0
+        with:
+          user: __token__
+          password: ${{ secrets.PYPI_API_TOKEN }}

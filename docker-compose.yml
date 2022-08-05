@@ -1,31 +1,32 @@
 version: "3.8"
 
 services:
-
   test:
     build:
       context: .
       dockerfile: dockerfile
       target: test
-    platform: linux/x86_64
 
   pre-commit:
     build:
       context: .
       dockerfile: dockerfile
       target: pre-commit
-    platform: linux/x86_64
+
+  pytest:
+    build:
+      context: .
+      dockerfile: dockerfile
+      target: pytest
 
   build-wheel:
     build:
       context: .
       dockerfile: dockerfile
       target: build-wheel
-    platform: linux/x86_64
 
   install-wheel:
     build:
       context: .
       dockerfile: dockerfile
       target: install-wheel
-    platform: linux/x86_64

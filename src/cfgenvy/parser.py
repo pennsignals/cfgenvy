@@ -1,4 +1,3 @@
-# -*- coding: utf-8 -*-
 """Parser."""
 
 from __future__ import annotations
@@ -7,7 +6,7 @@ from argparse import ArgumentParser
 from logging import getLogger
 from os import environ as osenviron
 from sys import argv as sysargv
-from typing import IO, Any, Mapping, Optional, Sequence, Type
+from typing import IO, Any, Mapping, Sequence
 
 from .env import Env
 from .yaml import yaml_loads
@@ -23,9 +22,9 @@ class Parser:
         cls,
         *,
         config_file: str,
-        env: Optional[Mapping[str, str]] = None,
-        env_cls: Optional[Type[Env]] = None,
-        env_file: Optional[str] = None,
+        env: Mapping[str, str] | None = None,
+        env_cls: type[Env] | None = None,
+        env_file: str | None = None,
     ):
         """Load."""
         _env = env or osenviron
@@ -56,9 +55,9 @@ class Parser:
         cls,
         *,
         configs: IO[str],
-        env: Optional[Mapping[str, str]] = None,
-        envs: Optional[IO[str]] = None,
-        env_cls: Optional[Type[Env]] = None,
+        env: Mapping[str, str] | None = None,
+        envs: IO[str] | None = None,
+        env_cls: type[Env] | None = None,
     ) -> Any:
         """Loads from strings."""
         _env = env or osenviron
@@ -75,9 +74,9 @@ class Parser:
     def parse(
         cls,
         *,
-        argv: Optional[Sequence[str]] = None,
-        env: Optional[Mapping[str, str]] = None,
-        env_cls: Optional[Type[Env]] = None,
+        argv: Sequence[str] | None = None,
+        env: Mapping[str, str] | None = None,
+        env_cls: type[Env] | None = None,
     ) -> Mapping[str, Any]:
         """Parse."""
         _argv = argv or sysargv[1:]

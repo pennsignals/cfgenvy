@@ -1,8 +1,8 @@
-# -*- coding: utf-8 -*-
 """Cfg env yaml."""
 
 from .env import Env
 from .parser import Parser
+from .yaml import Mapping as YamlMapping
 from .yaml import (
     yaml_dump,
     yaml_dumps,
@@ -10,7 +10,6 @@ from .yaml import (
     yaml_load,
     yaml_loads,
     yaml_type,
-    Mapping as YamlMapping,
 )
 
 __all__ = (
