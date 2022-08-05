@@ -43,7 +43,7 @@ Setup:
 
     python3.10 -m venv .venv
     . .venv/bin/activate
-    pip install ".[all]"
+    pip install ".[dev]"
     pre-commit install
     pre-commit run --all-files
 
@@ -53,6 +53,6 @@ Setup:
 
 ## Docker, Lint & Test
 
-    docker compose run test
-    docker compose run pre-commit
-    docker compose run test-wheel-install
+    docker compose up test
+    docker compose up pre-commit
+    docker compose up build-wheel && docker compose up install-wheel
