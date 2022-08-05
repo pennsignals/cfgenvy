@@ -44,4 +44,4 @@ CMD pip wheel --no-deps -w ./dist .
 
 
 FROM binaries as install-wheel
-CMD pip install --find-links=./dist cfgenvy[all]
+CMD pip install --find-links=./dist cfgenvy[dev]
