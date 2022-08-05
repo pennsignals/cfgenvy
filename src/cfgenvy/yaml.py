@@ -1,10 +1,9 @@
-# -*- coding: utf-8 -*-
 """Yaml."""
 
 from __future__ import annotations
 
 from logging import getLogger
-from typing import Any, Dict, Callable, Optional, Pattern, Type
+from typing import Any, Callable, Pattern
 
 from yaml import dump as _yaml_dumps
 from yaml import load as _yaml_loads
@@ -34,7 +33,7 @@ def yaml_load(path: str):
 def yaml_dumps(
     data,
     *,
-    Dumper: Optional[Type[MyDumper]] = None,  # noqa: N803
+    Dumper: type[MyDumper] | None = None,  # noqa: N803
     **kwargs,
 ):
     """Yaml dumps.
@@ -48,7 +47,7 @@ def yaml_dumps(
 def yaml_loads(
     stream,
     *,
-    Loader: Optional[Type[MyLoader]] = None,  # noqa: N803
+    Loader: type[MyLoader] | None = None,  # noqa: N803
 ):
     """Yaml loads.
 
@@ -62,10 +61,10 @@ def yaml_type(
     cls: type,
     tag: str,
     *,
-    init: Optional[Callable] = None,
-    repr: Optional[Callable] = None,  # pylint: disable=redefined-builtin
-    loader: Optional[Type[MyLoader]] = None,
-    dumper: Optional[Type[MyDumper]] = None,
+    init: Callable | None = None,
+    repr: Callable | None = None,  # pylint: disable=redefined-builtin
+    loader: type[MyLoader] | None = None,
+    dumper: type[MyDumper] | None = None,
     **kwargs,
 ):
     """Yaml type."""
@@ -92,9 +91,9 @@ def yaml_implicit_type(
     *,
     init: Callable,
     pattern: Pattern,
-    repr: Optional[Callable] = None,  # pylint: disable=redefined-builtin
-    loader: Optional[Type[MyLoader]] = None,
-    dumper: Optional[Type[MyDumper]] = None,
+    repr: Callable | None = None,  # pylint: disable=redefined-builtin
+    loader: type[MyLoader] | None = None,
+    dumper: type[MyDumper] | None = None,
     **kwargs,
 ):
     """Yaml implicit type."""
@@ -121,7 +120,7 @@ class Mapping:
     YAML = "!mapping"
 
     @classmethod
-    def as_yaml_type(cls, tag: Optional[str] = None) -> None:
+    def as_yaml_type(cls, tag: str | None = None) -> None:
         """As yaml type."""
         yaml_type(
             cls,
@@ -140,6 +139,6 @@ class Mapping:
         """Yaml repr."""
         return dumper.represent_mapping(tag, self.as_yaml())
 
-    def as_yaml(self) -> Dict[str, Any]:
+    def as_yaml(self) -> dict[str, Any]:
         """As yaml."""
         raise NotImplementedError()

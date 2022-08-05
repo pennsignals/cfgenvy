@@ -1,4 +1,3 @@
-# -*- coding: utf-8 -*-
 """Test cfgenvy."""
 
 from io import StringIO

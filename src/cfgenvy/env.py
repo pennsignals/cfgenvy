@@ -1,4 +1,3 @@
-# -*- coding: utf-8 -*-
 """Env."""
 
 from __future__ import annotations
@@ -6,7 +5,7 @@ from __future__ import annotations
 from logging import getLogger
 from os import environ as osenviron
 from re import compile as re_compile
-from typing import Mapping, Optional, Pattern
+from typing import Mapping, Pattern
 
 from .yaml import yaml_implicit_type
 
@@ -22,10 +21,10 @@ class Env:
     @classmethod
     def as_yaml_type(
         cls,
-        tag: Optional[str] = None,
+        tag: str | None = None,
         *,
-        env: Optional[Mapping[str, str]] = None,
-        pattern: Optional[Pattern] = None,
+        env: Mapping[str, str] | None = None,
+        pattern: Pattern | None = None,
     ):
         """As yaml type."""
         yaml_implicit_type(
