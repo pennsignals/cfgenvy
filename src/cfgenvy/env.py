@@ -25,7 +25,7 @@ class Env:
         *,
         env: Mapping[str, str] | None = None,
         pattern: Pattern | None = None,
-    ):
+    ) -> None:
         """As yaml type."""
         yaml_implicit_type(
             cls,
@@ -43,12 +43,10 @@ class Env:
         *,
         env: Mapping[str, str],
         pattern: Pattern,
-    ):
+    ) -> str:
         """From yaml."""
         value = loader.construct_scalar(node)
         match = pattern.findall(value)
-        if not match:
-            return value
         for group in match:
             variable = env.get(group, None)
             if variable is None:

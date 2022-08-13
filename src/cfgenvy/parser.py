@@ -14,6 +14,14 @@ from .yaml import yaml_loads
 logger = getLogger(__name__)
 
 
+CONFIG_ERROR = " ".join(
+    (
+        "the following arguments are required:",
+        "-c/--config or CONFIG from environment variable",
+    )
+)
+
+
 class Parser:
     """Parser."""
 
@@ -102,14 +110,7 @@ class Parser:
         )
         args = parser.parse_args(_argv)
         if args.config_file is None:
-            parser.error(
-                " ".join(
-                    (
-                        "the following arguments are required:",
-                        "-c/--config or CONFIG from environment variable",
-                    )
-                )
-            )
+            parser.error(CONFIG_ERROR)
         return cls.load(
             config_file=args.config_file,
             env=_env,

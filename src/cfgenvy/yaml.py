@@ -68,13 +68,12 @@ def yaml_type(
     **kwargs,
 ):
     """Yaml type."""
-    _loader = loader or MyLoader
-    _dumper = dumper or MyDumper
     if init is not None:
 
         def _init_closure(loader, node):
             return init(loader, node, **kwargs)
 
+        _loader = loader or MyLoader
         _loader.add_constructor(tag, _init_closure)
 
     if repr is not None:
@@ -82,6 +81,7 @@ def yaml_type(
         def _repr_closure(dumper, self):
             return repr(dumper, self, tag=tag, **kwargs)
 
+        _dumper = dumper or MyDumper
         _dumper.add_representer(cls, _repr_closure)
 
 
@@ -97,12 +97,11 @@ def yaml_implicit_type(
     **kwargs,
 ):
     """Yaml implicit type."""
-    _loader = loader or MyLoader
-    _dumper = dumper or MyDumper
 
     def _init_closure(loader, node):
         return init(loader, node, pattern=pattern, **kwargs)
 
+    _loader = loader or MyLoader
     _loader.add_constructor(tag, _init_closure)
     _loader.add_implicit_resolver(tag, pattern, None)
 
@@ -111,6 +110,7 @@ def yaml_implicit_type(
         def _repr_closure(dumper, self):
             return repr(dumper, self, tag=tag, pattern=pattern, **kwargs)
 
+        _dumper = dumper or MyDumper
         _dumper.add_representer(cls, _repr_closure)
 
 
