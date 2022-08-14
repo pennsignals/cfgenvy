@@ -39,16 +39,32 @@ Relative configargparse, python-dotenv, envyaml, and yamlenv:
 
 ## Develop, Lint & Test
 
-Setup:
+Setup virtual environment:
 
     python3.10 -m venv .venv
+
+Or setup homebrew environment:
+
+    brew install python@3.10
+    /opt/homebrew/Cellar/python@3.10/.../Frameworks/Python.framework/Versions/Current/python@3.10 -m venv .venv
+
+Once virtual environment is setup:
+
     . .venv/bin/activate
-    pip install ".[dev]"
+    pip install -U pip setuptools wheel
+    pip install -e ".[dev]"
     pre-commit install
-    pre-commit run --all-files
 
+Session:
+
+    . .venv/bin/activate
     ...
-
+    pytest
+    ...
+    pre-coommit run --all-files
+    ...
+    git commit -m 'Message'
+    ...
     deactivate
 
 ## Docker, Lint & Test
@@ -56,3 +72,5 @@ Setup:
     docker compose up test
     docker compose up pre-commit
     docker compose up build-wheel && docker compose up install-wheel
+    ...
+    docker compose down
