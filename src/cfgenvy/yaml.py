@@ -9,11 +9,11 @@ from yaml import dump as _yaml_dumps
 from yaml import load as _yaml_loads
 
 try:
-    from yaml import CSafeDumper as MyDumper  # type: ignore[misc]
-    from yaml import CSafeLoader as MyLoader  # type: ignore[misc]
+    from yaml import CSafeDumper as MyDumper  # type: ignore[misc,assignment]
+    from yaml import CSafeLoader as MyLoader  # type: ignore[misc,assingment]
 except ImportError:
-    from yaml import SafeDumper as MyDumper  # type: ignore[misc]
-    from yaml import SafeLoader as MyLoader  # type: ignore[misc]
+    from yaml import SafeDumper as MyDumper  # type: ignore[misc,assignment]
+    from yaml import SafeLoader as MyLoader  # type: ignore[misc,assignment]
 
 logger = getLogger(__name__)
 
