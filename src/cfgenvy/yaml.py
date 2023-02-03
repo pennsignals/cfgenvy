@@ -3,7 +3,8 @@
 from __future__ import annotations
 
 from logging import getLogger
-from typing import Any, Callable, Pattern
+from re import Pattern
+from typing import Any, Callable
 
 from yaml import dump as _yaml_dumps
 from yaml import load as _yaml_loads
