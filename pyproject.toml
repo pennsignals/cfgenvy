@@ -1,10 +1,10 @@
 [build-system]
 requires = [
-    "pip>=22.0.4",
+    "pip>=23.0",
     "pytest-runner>=6.0.0",
-    "setuptools>=61.2.0",
-    "setuptools_scm[toml]>=6.4.2",
-    "wheel>=0.37.1",
+    "setuptools>=67.1.0",
+    "setuptools_scm[toml]>=7.1.0",
+    "wheel>=0.38.4",
 ]
 build-backend = "setuptools.build_meta"
 
@@ -20,8 +20,6 @@ classifiers = [
     "License :: OSI Approved :: MIT License",
     "Operating System :: Unix",
     "Operating System :: POSIX",
-    "Programming Language :: Python :: 3.7",
-    "Programming Language :: Python :: 3.8",
     "Programming Language :: Python :: 3.9",
     "Programming Language :: Python :: 3.10",
     "Programming Language :: Python :: 3.11",
@@ -35,7 +33,7 @@ description = "Configuration from Environment embedded in yaml."
 dynamic = ["version"]
 license = { file = "license.txt" }
 name = "cfgenvy"
-requires-python = ">=3.7"
+requires-python = ">=3.9"
 readme = "readme.md"
 
 [project.optional-dependencies]
@@ -69,7 +67,7 @@ Tracker = "https://github.com/pennsignals/cfgenvy/issues"
 
 [tool.black]
 line-length = 79
-target-version = ["py37","py38","py39","py310","py311"]
+target-version = ["py39","py310","py311"]
 
 [tool.coverage.report]
 exclude_lines = [
@@ -85,7 +83,7 @@ branch = true
 parallel = true
 
 [tool.distutils.bdist_wheel]
-python-tag = "py37.py38.py39.py310"
+python-tag = "py39.py310.py311"
 
 [tool.isort]
 include_trailing_comma = true
