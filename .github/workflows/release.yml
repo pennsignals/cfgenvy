@@ -11,7 +11,7 @@ jobs:
 
     steps:
       - name: checkout
-        uses: actions/checkout@v2
+        uses: actions/checkout@v3
 
       - name: build
         run: |
@@ -19,7 +19,7 @@ jobs:
 
       - name: pre-release
         if: ${{ github.event.release.prerelease }}
-        uses: pypa/gh-action-pypi-publish@v1.5.0
+        uses: pypa/gh-action-pypi-publish@v1.6.4
         with:
           repository_url: https://test.pypi.org/legacy/
           user: __token__
@@ -27,7 +27,7 @@ jobs:
 
       - name: release
         if: ${{ !github.event.release.prerelease }}
-        uses: pypa/gh-action-pypi-publish@v1.5.0
+        uses: pypa/gh-action-pypi-publish@v1.6.4
         with:
           user: __token__
           password: ${{ secrets.PYPI_API_TOKEN }}
