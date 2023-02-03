@@ -2,10 +2,11 @@
 
 from __future__ import annotations
 
+from collections.abc import Mapping
 from logging import getLogger
 from os import environ as osenviron
+from re import Pattern
 from re import compile as re_compile
-from typing import Mapping, Pattern
 
 from .yaml import yaml_implicit_type
 

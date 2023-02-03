@@ -3,10 +3,11 @@
 from __future__ import annotations
 
 from argparse import ArgumentParser
+from collections.abc import Mapping, Sequence
 from logging import getLogger
 from os import environ as osenviron
 from sys import argv as sysargv
-from typing import IO, Any, Mapping, Sequence
+from typing import IO, Any
 
 from .env import Env
 from .yaml import yaml_loads
