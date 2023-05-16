@@ -1,18 +1,22 @@
 [build-system]
 requires = [
+    "poetry-core>=1.1.0",
     "pip>=23.0",
     "pytest-runner>=6.0.0",
     "setuptools>=67.1.0",
     "setuptools_scm[toml]>=7.1.0",
     "wheel>=0.38.4",
 ]
-build-backend = "setuptools.build_meta"
+build-backend = "poetry.core.masonry.api"
 
-[project]
+[tool.poetry]
+name = "cfgenvy"
+version = "0.1.0"
+description = "Configuration from Environment embedded in yaml."
 authors = [
-    { name = "Jason Lubken", email = "jlubken@users.noreply.github.com" },
-    { name = "Graydon Neill", email = "grayeye@users.noreply.github.com" },
-    { name = "Penn Signals", email = "pennsignals@pennmedicine.upenn.edu" },
+    "Jason Lubken <jlubken@users.noreply.github.com>",
+    "Graydon Neill <grayeye@users.noreply.github.com>",
+    "Penn Signals <pennsignals@pennmedicine.upenn.edu>"
 ]
 classifiers = [
     "Development Status :: 5 - Production/Stable",
@@ -26,21 +30,18 @@ classifiers = [
     "Programming Language :: Python :: Implementation :: CPython",
     "Topic :: Utilities",
 ]
-dependencies = [
-    "pyyaml>=6.0",
-]
-description = "Configuration from Environment embedded in yaml."
-dynamic = ["version"]
-license = { file = "license.txt" }
-name = "cfgenvy"
-requires-python = ">=3.9"
+license = "MIT"
 readme = "readme.md"
 
-[project.optional-dependencies]
+[tool.poetry.dependencies]
+pyyaml = ">=6.0"
+python = ">=3.9"
+
+[tool.poetry.extras]
 dev = [
     "astroid",
     "black",
-    "coverage[toml]",
+    #"coverage[toml]",
     "flake8",
     "flake8-bugbear",
     "flake8-commas",
@@ -60,7 +61,7 @@ dev = [
     "types-pyyaml",
 ]
 
-[project.urls]
+[tool.poetry.urls]
 Homepage = "https://github.com/pennsignals/cfgenvy"
 Source = "https://github.com/pennsignals/cfgenvy"
 Tracker = "https://github.com/pennsignals/cfgenvy/issues"
