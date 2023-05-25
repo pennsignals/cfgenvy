@@ -1,18 +1,17 @@
 [build-system]
 requires = [
     "poetry-core>=1.1.0",
+    "poetry-dynamic-versioning",
     "pip>=23.0",
     "pytest-runner>=6.0.0",
-    #"setuptools>=67.1.0",
-    "setuptools_scm[toml]>=7.1.0",
     "wheel>=0.38.4",
 ]
-build-backend = "poetry.core.masonry.api"
+build-backend = "poetry_dynamic_versioning.backend"
 
 [tool.poetry]
 name = "cfgenvy"
-version = "0.1.0"
 description = "Configuration from Environment embedded in yaml."
+version = "0.0.0"
 authors = [
     "Jason Lubken <jlubken@users.noreply.github.com>",
     "Graydon Neill <grayeye@users.noreply.github.com>",
@@ -32,6 +31,16 @@ classifiers = [
 ]
 license = "MIT"
 readme = "readme.md"
+
+[tool.poetry-dynamic-versioning]
+dirty = true
+enable = true
+pattern = """(?x)                                               (?# ignore whitespace)
+    ^((?P<epoch>\\d+)!)?(?P<base>\\d+(\\.\\d+)*)                (?# v1.2.3 or v1!2000.1.2)
+    ([-._]?((?P<stage>[a-zA-Z]+)[-._]?(?P<revision>\\d+)?))?    (?# b0)
+    (\\+(?P<tagged_metadata>.+))?$                              (?# +linux)"""
+metadata = true
+vcs = "git"
 
 [tool.poetry.dependencies]
 pyyaml = ">=6.0"
