@@ -67,7 +67,7 @@ def yaml_type(
     loader: type[MyLoader] | None = None,
     dumper: type[MyDumper] | None = None,
     **kwargs,
-):
+):  # pylint: disable=too-many-arguments
     """Yaml type."""
     if init is not None:
 
@@ -96,7 +96,7 @@ def yaml_implicit_type(
     loader: type[MyLoader] | None = None,
     dumper: type[MyDumper] | None = None,
     **kwargs,
-):
+):  # pylint: disable=too-many-arguments
     """Yaml implicit type."""
 
     def _init_closure(loader, node):
