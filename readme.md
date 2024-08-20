@@ -45,8 +45,8 @@ Setup virtual environment:
 
 Or setup homebrew environment:
 
-    brew install python@3.10
-    /opt/homebrew/Cellar/python@3.10/.../Frameworks/Python.framework/Versions/Current/python@3.10 -m venv .venv
+    brew install python@3.12
+    python3.12 -m venv .venv
 
 Once virtual environment is setup:
 
